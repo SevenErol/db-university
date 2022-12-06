@@ -62,3 +62,11 @@
 ## Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
 **SELECT `teachers`.`id` , `courses`.`*` , `teachers`.`name`, `teachers`.`surname` FROM `course_teacher` JOIN `courses` ON `courses`.`id` = `course_teacher`.`course_id` JOIN `teachers` ON `teachers`.`id` = `course_teacher`.`teacher_id` WHERE `teachers`.`id` = 44;**
+
+## Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+
+**SELECT `students`.`name` AS 'Name', `students`.`surname` AS 'Surname', `degrees`.`*` ,` departments`.`name` AS 'Department Name' FROM `degrees` JOIN `students` ON `degrees`.`id` = `students`.`degree_id` JOIN `departments` ON `degrees`.`department_id` = `departments`.`id` ORDER BY `students`.`surname` ASC, `students`.`name` ASC;**
+
+## Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+**SELECT `degrees`.`name`,`courses`.`name` AS 'course_name', `teachers`.`name` AS 'teacher_name', `teachers`.`surname` AS 'teacher_surname' FROM `course_teacher` JOIN `teachers` ON `teachers`.`id` = `course_teacher`.`teacher_id` JOIN `courses` ON `courses`.`id` = `course_teacher`.`course_id` JOIN `degrees` ON `degrees`.`id` = `courses`.`degree_id`;**
