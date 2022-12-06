@@ -29,3 +29,21 @@
 ## Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 
 **SELECT * FROM `teachers` WHERE `phone` IS NULL;**
+
+## GROUP BY SECTION
+
+## Contare quanti iscritti ci sono stati ogni anno
+
+**SELECT COUNT(`students`.`id`), YEAR(`enrolment_date`) FROM `students` GROUP BY YEAR (`enrolment_date`) ORDER BY YEAR (`students`.`enrolment_date`) DESC;**
+
+## Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
+**SELECT COUNT(`teachers`.`id`), `teachers`.`office_address` FROM `teachers` GROUP BY `teachers`.`office_address`;**
+
+## Calcolare la media dei voti di ogni appello d'esame
+
+**SELECT `exam_student`.`exam_id`, AVG(`exam_student`.`vote`) FROM `exam_student` GROUP BY `exam_student`.`exam_id`;**
+
+## Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+**SELECT `degrees`.`department_id`, COUNT(`degrees`.`name`) FROM `degrees` GROUP BY `degrees`.`department_id`;**
